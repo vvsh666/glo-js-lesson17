@@ -40,3 +40,51 @@ class Building {
         this._property = check
     }
 }
+
+class ProductBuilding extends Building {
+    constructor(cadastralNum, name, area, property, nameProduct, power) {
+        super(cadastralNum, name, area, property)
+        this._nameProduct = nameProduct
+        this._power = power
+    }
+
+    get nameProduct() {
+        return this._nameProduct
+    }
+
+    set nameProduct(str) {
+        this._nameProduct = str
+    }
+
+    get power() {
+        return this._power
+    }
+
+    set power(num) {
+        this._power = num
+    }
+}
+
+class OfficeBuilding extends Building {
+    constructor(cadastralNum, name, area, property, floorsNum, workerNum) {
+        super(cadastralNum, name, area, property)
+        this._floorsNum = floorsNum
+        this._workerNum = workerNum
+    }
+
+    get floorsNum() {
+        return this._floorsNum
+    }
+
+    set floorsNum(num) {
+        this._floorsNum = num
+    }
+
+    get workerNum() {
+        return this._workerNum
+    }
+
+    set workerNum(num) {
+        this._workerNum = num
+    }
+}
