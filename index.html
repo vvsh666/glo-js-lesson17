@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
+    <script src="./model.js" defer></script>
+    <script src="./dom.js" defer></script>
     <title>Lesson 17</title>
 </head>
 
@@ -25,7 +26,7 @@
                         <div class="form-item">
                             <label for="building-type">Тип здания</label>
                             <select name="type" id="building-type">
-                                <option value="" selected>Тип здания</option>
+                                <option value="">Тип здания</option>
                                 <option value="product">Промышленное</option>
                                 <option value="office">Административное</option>
                             </select>
@@ -46,21 +47,21 @@
                             <label for="building-property">Отметьте если здание в собственности</label>
                             <input type="checkbox" id="building-property" disabled>
                         </div>
-                        <div class="form-item product">
+                        <div class="form-item">
                             <label for="building-name-product">Наименование продукции</label>
-                            <input type="text" id="building-name-product" disabled>
+                            <input class="product" type="text" id="building-name-product" disabled>
                         </div>
-                        <div class="form-item product">
+                        <div class="form-item">
                             <label for="building-name-product">Мощность производства (т/мес)</label>
-                            <input type="text" id="building-power" disabled>
+                            <input class="product" type="text" id="building-power" disabled>
                         </div>
-                        <div class="form-item office">
+                        <div class="form-item">
                             <label for="building-level-num">Количество этажей</label>
-                            <input type="text" id="building-level-num" disabled>
+                            <input class= "office" type="text" id="building-level-num" disabled>
                         </div>
-                        <div class="form-item office">
+                        <div class="form-item">
                             <label for="building-worker-num">Количество рабочих мест</label>
-                            <input type="text" id="building-worker-num" disabled>
+                            <input class= "office" type="text" id="building-worker-num" disabled>
                         </div>
                         <div class="form-button"><input type="submit" id="btn-submit" disabled></div>
                     </form>
