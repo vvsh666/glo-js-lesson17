@@ -66,18 +66,18 @@ class ProductBuilding extends Building {
 }
 
 class OfficeBuilding extends Building {
-    constructor(cadastralNum, name, area, property, floorsNum, workerNum) {
+    constructor(cadastralNum, name, area, property, levelNum, workerNum) {
         super(cadastralNum, name, area, property)
-        this._floorsNum = floorsNum
+        this._levelNum = levelNum
         this._workerNum = workerNum
     }
 
-    get floorsNum() {
-        return this._floorsNum
+    get levelNum() {
+        return this._levelNum
     }
 
-    set floorsNum(num) {
-        this._floorsNum = num
+    set levelNum(num) {
+        this._levelNum = num
     }
 
     get workerNum() {
