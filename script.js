@@ -88,3 +88,13 @@ class OfficeBuilding extends Building {
         this._workerNum = num
     }
 }
+
+const office1 = new OfficeBuilding('sadfsd435345', 'Административно-бытовой корпус 1', 525, true, 2, 35)
+const office2 = new OfficeBuilding('sad435345345', 'Административно-бытовой корпус 2', 1520, false, 4, 67)
+const product1 = new ProductBuilding('34534fgdfg', 'Цех заготовительныq', 2510, true, 'Металлоконструкции', 1500)
+const product2 = new ProductBuilding('34534fgdfg', 'Цех малярный', 2510, true, 'Покраска металлоконструкций', 650)
+
+console.log(office1)
+console.log(office2)
+console.log(product1)
+console.log(product2)
