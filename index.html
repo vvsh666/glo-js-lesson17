@@ -17,53 +17,76 @@
         </div>
     </header>
     <main>
-        <div class="container">
-            <div class="input-data">
-                <h2>Ввод данных</h2>
-                <form action="">
-                    <div class="form-item">
-                        <label for="building-type">Тип здания</label>
-                        <select name="type" id="building-type" required>
-                            <option value="product">Промышленное</option>
-                            <option value="office">Административное</option>
-                        </select>
-                    </div>
-                    <div class="form-item">
-                        <label for="building-cad-num">Кадастровый номер</label>
-                        <input type="text" id="building-cad-num">
-                    </div>
-                    <div class="form-item">
-                        <label for="building-name">Название здания</label>
-                        <input type="text" id="building-name">
-                    </div>
-                    <div class="form-item">
-                        <label for="building-area">Площадь</label>
-                        <input type="text" id="building-area">
-                    </div>
-                    <div class="form-item">
-                        <label for="building-property">Отметьте если здание в собственности</label>
-                        <input type="checkbox" id="building-property">
-                    </div>
-                    <div class="form-item product">
-                        <label for="building-name-product">Наименование продукции</label>
-                        <input type="text" id="building-name-product">
-                    </div>
-                    <div class="form-item product">
-                        <label for="building-name-product">Мощность производства (т/мес)</label>
-                        <input type="text" id="building-power">
-                    </div>
-                    <div class="form-item office">
-                        <label for="building-level-num">Количество этажей</label>
-                        <input type="text" id="building-level-num">
-                    </div>
-                    <div class="form-item office">
-                        <label for="building-worker-num">Количество рабочих мест</label>
-                        <input type="text" id="building-worker-num">
-                    </div>
-                    <div class="form-button"><input type="submit" id="btn-submit"></div>
-                </form>
+        <section class="input">
+            <div class="container">
+                <div class="input-data">
+                    <h2>Ввод данных</h2>
+                    <form action="">
+                        <div class="form-item">
+                            <label for="building-type">Тип здания</label>
+                            <select name="type" id="building-type">
+                                <option value="" selected>Тип здания</option>
+                                <option value="product">Промышленное</option>
+                                <option value="office">Административное</option>
+                            </select>
+                        </div>
+                        <div class="form-item">
+                            <label for="building-cad-num">Кадастровый номер</label>
+                            <input type="text" id="building-cad-num" disabled>
+                        </div>
+                        <div class="form-item">
+                            <label for="building-name">Название здания</label>
+                            <input type="text" id="building-name" disabled>
+                        </div>
+                        <div class="form-item">
+                            <label for="building-area">Площадь</label>
+                            <input type="text" id="building-area" disabled>
+                        </div>
+                        <div class="form-item">
+                            <label for="building-property">Отметьте если здание в собственности</label>
+                            <input type="checkbox" id="building-property" disabled>
+                        </div>
+                        <div class="form-item product">
+                            <label for="building-name-product">Наименование продукции</label>
+                            <input type="text" id="building-name-product" disabled>
+                        </div>
+                        <div class="form-item product">
+                            <label for="building-name-product">Мощность производства (т/мес)</label>
+                            <input type="text" id="building-power" disabled>
+                        </div>
+                        <div class="form-item office">
+                            <label for="building-level-num">Количество этажей</label>
+                            <input type="text" id="building-level-num" disabled>
+                        </div>
+                        <div class="form-item office">
+                            <label for="building-worker-num">Количество рабочих мест</label>
+                            <input type="text" id="building-worker-num" disabled>
+                        </div>
+                        <div class="form-button"><input type="submit" id="btn-submit" disabled></div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="output">
+            <div class="container">
+                <h2>Вывод данных</h2>
+                <table>
+                    <tr>
+                        <th>Тип</th>
+                        <th>Кадастровый номер</th>
+                        <th>Название</th>
+                        <th>Площадь</th>
+                        <th>Собственность</th>
+                        <th>Наименование продукции</th>
+                        <th>Мощность производства</th>
+                        <th>Кол-во этажей</th>
+                        <th>Кол-во рабочих мест</th>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
     </main>
 </body>
 
