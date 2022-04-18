@@ -4,9 +4,10 @@ const textInputsProduct = document.querySelectorAll('.product')
 const textInputsOffice = document.querySelectorAll('.office')
 const checkboxInput = document.getElementById('building-property')
 const btnForm = document.getElementById('btn-submit')
+const form = document.querySelector('form')
 let inputsEnabled = document.querySelectorAll('input[type=text]:not([disabled])')
 
-console.log(btnForm);
+console.log(form);
 
 selectTypeBuilding.addEventListener('change', () => {
     if (selectTypeBuilding.value === '') {
@@ -45,6 +46,11 @@ selectTypeBuilding.addEventListener('change', () => {
             btnForm.disabled = empty !== 0
         })
     })
+})
+
+form.addEventListener('submit', (e) => {
+    // e.preventDefault()
+    console.log(this);
 })
 
 
