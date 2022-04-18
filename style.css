@@ -85,3 +85,10 @@ th {
     border-left: solid 1px rgb(2, 94, 71);
     border-top: solid 1px rgb(2, 94, 71);
 }
+
+.del-btn {
+    display: block;
+    margin: 0 auto;
+    width: 10px;
+    height: 10px;
+}
