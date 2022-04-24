@@ -53,7 +53,7 @@ class Building {
         this._property = check
     }
 
-    
+
 }
 
 class ProductBuilding extends Building {
@@ -105,92 +105,93 @@ class OfficeBuilding extends Building {
 }
 
 selectTypeBuilding.addEventListener('change', () => {
-        if (selectTypeBuilding.value === '') {
-            checkboxInput.checked = false
-            checkboxInput.disabled = true
-            textInputs.forEach((item) => {
-                item.value = ''
-                item.disabled = true
-            })
-        }
-        if (selectTypeBuilding.value === 'product' || selectTypeBuilding.value === 'office') {
-            checkboxInput.disabled = false
-            textInputs.forEach((item) => {
-                item.disabled = false
-            })
-        }
-        if (selectTypeBuilding.value === 'product') {
-            textInputsOffice.forEach((item) => {
-                item.value = ''
-                item.disabled = true
-            })
-        }
-        if (selectTypeBuilding.value === 'office') {
-            textInputsProduct.forEach((item) => {
-                item.value = ''
-                item.disabled = true
-            })
-        }
-        inputsEnabled = document.querySelectorAll('input[type=text]:not([disabled])')
-        inputsEnabled.forEach((input) => {
-            input.addEventListener('input', () => {
-                let empty = [...inputsEnabled].filter(el => {
-                    return el.value.trim() === ''
-                }).length
-                btnForm.disabled = empty !== 0
-            })
-        })
-    })
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        let obj
-        if (form[0].value === 'product') {
-            obj = new ProductBuilding(
-                form[1].value,
-                form[2].value,
-                form[3].value,
-                form[4].checked,
-                form[5].value,
-                form[6].value
-            )
-        }
-        if (form[0].value === 'office') {
-            obj = new OfficeBuilding(
-                form[1].value,
-                form[2].value,
-                form[3].value,
-                form[4].checked,
-                form[7].value,
-                form[8].value
-            )
-        }
-        console.log(obj);
-        arrData.push(obj)
-        console.log(arrData);
-        resetForm()
-        addLocalStorage()
-        showTableRow(obj)
-    })
-    
-    const resetForm = () => {
-        form.querySelectorAll('input[type=text]').forEach((item) => {
+    if (selectTypeBuilding.value === '') {
+        checkboxInput.checked = false
+        checkboxInput.disabled = true
+        textInputs.forEach((item) => {
             item.value = ''
             item.disabled = true
         })
-        form[0].value = ''
-        form[4].checked = false
-        form[4].disabled = true
-        form[9].disabled = true
     }
-    
-    const addLocalStorage = () => {
-        localStorage.setItem('dataBuildings', JSON.stringify(arrData))
+    if (selectTypeBuilding.value === 'product' || selectTypeBuilding.value === 'office') {
+        checkboxInput.disabled = false
+        textInputs.forEach((item) => {
+            item.disabled = false
+        })
     }
-    
-    const showTableRow = (obj) => {
-        const tr = document.createElement('tr')
-        tr.innerHTML = `
+    if (selectTypeBuilding.value === 'product') {
+        textInputsOffice.forEach((item) => {
+            item.value = ''
+            item.disabled = true
+        })
+    }
+    if (selectTypeBuilding.value === 'office') {
+        textInputsProduct.forEach((item) => {
+            item.value = ''
+            item.disabled = true
+        })
+    }
+    inputsEnabled = document.querySelectorAll('input[type=text]:not([disabled])')
+    inputsEnabled.forEach((input) => {
+        input.addEventListener('input', () => {
+            let empty = [...inputsEnabled].filter(el => {
+                return el.value.trim() === ''
+            }).length
+            btnForm.disabled = empty !== 0
+        })
+    })
+})
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    let obj
+
+    if (form[0].value === 'product') {
+        obj = new ProductBuilding(
+            form[1].value,
+            form[2].value,
+            form[3].value,
+            form[4].checked,
+            form[5].value,
+            form[6].value
+        )
+    }
+    if (form[0].value === 'office') {
+        obj = new OfficeBuilding(
+            form[1].value,
+            form[2].value,
+            form[3].value,
+            form[4].checked,
+            form[7].value,
+            form[8].value
+        )
+    }
+    resetForm()
+    arrData.push(obj)
+    addLocalStorage()
+    showTable(arrData)
+})
+
+const resetForm = () => {
+    form.querySelectorAll('input[type=text]').forEach((item) => {
+        item.value = ''
+        item.disabled = true
+    })
+    form[0].value = ''
+    form[4].checked = false
+    form[4].disabled = true
+    form[9].disabled = true
+}
+
+const addLocalStorage = () => {
+    localStorage.setItem('dataBuildings', JSON.stringify(arrData))
+}
+
+const showTableRow = (obj) => {
+    const tr = document.createElement('tr')
+
+    tr.innerHTML = `
             <td>${obj._cadastralNum}</td>
             <td>${obj._name}</td>
             <td>${obj._area}</td>
@@ -201,30 +202,40 @@ selectTypeBuilding.addEventListener('change', () => {
             <td>${obj._workerNum}</td>
             <td><button class = "del-btn"></button></td>
         `
-        tableBody.append(tr)
-        table.querySelectorAll('td').forEach((item) => {
-            if (item.textContent === 'undefined') {
-                item.textContent = '-'
-            }
-            if (item.textContent === 'true') {
-                item.textContent = 'да'
-            }
-            if (item.textContent === 'false') {
-                item.textContent = 'нет'
-            }
+    tableBody.append(tr)
+
+}
+
+const showTable = (arr) => {
+    tableBody.innerHTML = ''
+    arr.forEach((item) => {
+        showTableRow(item)
+    })
+    table.querySelectorAll('td').forEach((item) => {
+        if (item.textContent === 'undefined') {
+            item.textContent = '-'
+        }
+        if (item.textContent === 'true') {
+            item.textContent = 'да'
+        }
+        if (item.textContent === 'false') {
+            item.textContent = 'нет'
+        }
+    })
+    deleteBtns = table.querySelectorAll('.del-btn')
+    deleteBtns.forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+            deleteObj(index)
         })
-        tr.querySelector('.del-btn').addEventListener('click', (e) => {
-            // Building.deleteObj()
-            console.log(e.target.parentNode.parentNode.parentNode);
-        })
+    })
+}
+
+const deleteObj = (index) => {
+    if (confirm('Вы уверены, что хотите удалить запись?')) {
+        arrData.splice(index, 1)
+        addLocalStorage()
+        showTable(arrData)
     }
-    
-    const showTable = (arr) => {
-        arr.forEach((item) => {
-            showTableRow(item)
-        })
-    
-    
-    }
-    
-    showTable(arrData)
+}
+
+showTable(arrData)
