@@ -5,7 +5,8 @@ const textInputsOffice = document.querySelectorAll('.office')
 const checkboxInput = document.getElementById('building-property')
 const btnForm = document.getElementById('btn-submit')
 const form = document.querySelector('form')
-const table = document.querySelector('table')
+const table = document.querySelector('.table')
+const tableBody = table.querySelector('tbody')
 let inputsEnabled = document.querySelectorAll('input[type=text]:not([disabled])')
 let deleteBtns = table.querySelectorAll('.del-btn')
 let arrData = JSON.parse(localStorage.getItem('dataBuildings')) || []
@@ -98,20 +99,26 @@ const addLocalStorage = () => {
 const showTableRow = (obj) => {
     const tr = document.createElement('tr')
     tr.innerHTML = `
-        <th>${obj._cadastralNum}</th>
-        <th>${obj._name}</th>
-        <th>${obj._area}</th>
-        <th>${obj._property}</th>
-        <th>${obj._nameProduct}</th>
-        <th>${obj._power}</th>
-        <th>${obj._levelNum}</th>
-        <th>${obj._workerNum}</th>
-        <th><button class = "del-btn"></button></th>
+        <td>${obj._cadastralNum}</td>
+        <td>${obj._name}</td>
+        <td>${obj._area}</td>
+        <td>${obj._property}</td>
+        <td>${obj._nameProduct}</td>
+        <td>${obj._power}</td>
+        <td>${obj._levelNum}</td>
+        <td>${obj._workerNum}</td>
+        <td><button class = "del-btn"></button></td>
     `
-    table.append(tr)
-    table.querySelectorAll('th').forEach((item) => {
+    tableBody.append(tr)
+    table.querySelectorAll('td').forEach((item) => {
         if (item.textContent === 'undefined') {
             item.textContent = '-'
+        }
+        if (item.textContent === 'true') {
+            item.textContent = 'да'
+        }
+        if (item.textContent === 'false') {
+            item.textContent = 'нет'
         }
     })
     tr.querySelector('.del-btn').addEventListener('click', (e) => {

@@ -77,13 +77,24 @@ h2 {
     font-size: 1.5rem;
 }
 
-table {
+.table {
     width: 100%;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    border-collapse: collapse; 
 }
 
-th {
-    border-left: solid 1px rgb(2, 94, 71);
-    border-top: solid 1px rgb(2, 94, 71);
+.table th {
+    font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #ddd;
+}
+
+.table td {
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    text-align: left;
 }
 
 .del-btn {
